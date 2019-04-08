@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta content="description" name="description">
+    <meta name="google" content="notranslate"/>
+    <meta content="Mashup templates have been developped by Orson.io team" name="author">
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <link rel="robot-icon" sizes="180x180" href="./assets/robot-icon-180x180.png">
+    <link href="./assets/robot-icon-180x180.ico" rel="icon">
+
+    <title>Tech Watch</title>
+
+    <link href="./main.3f6952e4.css" rel="stylesheet">
+</head>
+
+<body class="">
+<div id="site-border-left"></div>
+<div id="site-border-right"></div>
+<div id="site-border-top"></div>
+<div id="site-border-bottom"></div>
+<!-- Add your content of header -->
+<header>
+    <nav class="navbar  navbar-fixed-top navbar-default">
+        <div class="container">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"
+                    aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav ">
+                    <li><a href="./index.html" title="">Home</a></li>
+                    <li><a href="./intro.html" title="">Introduction</a></li>
+                    <li><a href="./article1.html" title="">GANs</a></li>
+                    <li><a href="./article2.html" title="">Beautiful Art vs Terrifying Deepfakes</a></li>
+                    <li><a href="./article3.html" title="">What's next ?</a></li>
+                    <li><a href="./news.html" title="">News</a></li>
+                    <li><a href="./videos.html" title="">Videos</a></li>
+                    <li><a href="./about.html" title="">About</a></li>
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="section-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <img src="./assets/images/work001-01.jpg" class="img-responsive" alt="">
+                <div class="card-container">
+                    <div class="text-center">
+                        <h1 class="h2">Beautiful Art vs Terrifying Deepfakes</h1>
+                    </div>
+                    <p style="text-align:center; font-size:120%;">Cet article présente les applications liées aux
+                        réseaux antagonistes génératifs ainsi que les
+                        conséquences sur notre quotidien</p>
+
+                    <blockquote>
+                        <p>“The thing about quotes from the internet is that it is hard to verify their
+                            authenticity”</p>
+                        <small class="pull-right">Abraham Lincoln<sup>&#42;</sup></small>
+                    </blockquote>
+                </div>
+            </div>
+
+
+            <div class="col-md-8 col-md-offset-2 section-container-spacer">
+                <div class="row">
+                    <div class="col-xs-12 col-md-6">
+                        <img src="./assets/images/work002-02.jpg" class="img-responsive" alt="">
+                        <p>Grenouille, to be or not to be ?</p>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        <img src="./assets/images/work002-03.jpg" class="img-responsive" alt="">
+                        <p>Pont du Golden Gate dans le style de Van Gogh</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12">
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Comme nous avons pu le voir sur le <a href="./intro.html#paper">graphique</a> de l'introduction, depuis
+                    2016, le nombre d'articles scientifiques portant sur les GANS a crû exponentiellement. Ainsi beaucoup
+                    de premières applications liées à ces derniers ont été développées, d'abord dans la recherche. Cependant,
+                    petit à petit, on observe de plus en plus de mise en production de GANs, en tant que solution
+                    technologique, dans l'industrie (au sens large).
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Dans le domaine de la recherche, tout d'abord, plusieurs grands types de réseaux génératifs
+                    antagonistes ont émergés au fil des années. Ici, on se concentrera sur trois types en particulier :
+                    <ul style="text-align:justify; font-size:160%; font-weight:400;">
+                        <li>Variational Auto-Encoder GAN, qui permet d'encoder l'information prise en entrée sous forme
+                            d'une vecteur condensé et notamment la génération d'images à l'aide de simple opérations
+                            arithmétiques;</li>
+                        <li>Conditional GAN, des réseaux antagonistes qui génèrent également des output à partir de bruit blanc
+                            mais conditionnellement à un input comme du texte ou des contraintes physiques;</li>
+                        <li>Cycle GAN qui permettent notamment de transférer un style entre deux images. </li>
+                    </ul>
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:170%; font-weight:400;">
+                    <b>VAE-GAN</b>
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Les auto-encodeurs sont un type spécifique de réseaux de neurones dont l'entrée se veut être la même
+                    que la sortie. Ils "compressent" l'entrée en une forme vectoriel de dimension moindre à l'aide de
+                    l'encodeur et reconstruisent ensuite la sortie à partir de cet espace de représentation, que l'on appelle
+                    le <i>latent-space</i>, à l'aide du décodeur. Le vecteur au sein du latent-space est un "résumé" compact
+                    de l'entrée, également appelé <i>latent-space representation</i>.
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p align="center">
+                    <img src="./assets/images/autoencoder.jpg" class="img-responsive" alt="" align="middle">
+                </p>
+
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Tout l'intérêt des VAE-GANs c'est qu'il est ensuite possible de générer par exemple des images non
+                    plus à partir de bruit blanc mais à partir de cette représentation d'une entrée au sein du
+                    latent-space. Ainsi les images re-générées seront de plus en plus fidèles aux images d'entrée. Un
+                    des attraits de cette technique repose principalement sur les propriétés intéressantes qui découlent
+                    de l'utilisation du latent-space. Il est en effet possible de réaliser des opérations arithmétiques
+                    entre les représentations vectorielles des différents inputs afin de générer de nouvelles formes.
+                    Ainsi, dans l'image suivante, il devient possible, à partir de trois designs de chaises, de générer
+                    un nouveau design complétement unique.
+                </p>
+
+                <p align="center">
+                    <img width="784" height="441" src="./assets/images/latentspace.jpg" class="img-responsive" alt="" align="middle">
+                </p>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    En utilisant ces mêmes propriétés liées au latent-sapce, il est possible d'apprendre la structure 3D
+                    de données d'entrée seulement à partir de leur représentation 2D. Ensuite, l'utilisation de
+                    GANs permet d'appliquer des changements grossiers, moyens ou fins sur les données générées. Cela est
+                    rendu possible en réalisant des translations au sein du latent-space dans la direction d’un style donné.
+                    Dans la vidéo suivante, cela est mis en place sur des voitures et des chambres d'hôtel.
+                </p>
+
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p align="center">
+                    <iframe width="784" height="441" src="https://www.youtube.com/embed/kSLJriaOumA?start=332"
+                            frameborder="0" allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+
+                    </iframe>
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Une application très intéressante des VAE-GANs est de pouvoir générer des images réalistes à partir
+                    d'une carte sémantique comme représenté sur le gif suivant. En effent, il faut savoir que les systèmes
+                    utilisés dans les voitures autonomes transforment les images capturées en temps-réel en cartes
+                    sémantiques. Ainsi en effectuant le chemin inverse et en réalisant des images et vidéos réalistes
+                    d'environnements routiers urbains à partir de cartes sémantiques il devient possible d'entraîner
+                    les systèmes au sein de ces voitures autonomes sans même sortir la
+                    <a href="https://www.voiture-autonome.net/google-car">Google Car</a> du garage.
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p align="center">
+                    <img src="./assets/images/semantic-map.gif" class="img-responsive" alt="" align="middle">
+                </p>
+                <p></p>
+
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    En mars 2019, les équipes R&D de NVIDIA ont dévoilé un nouveau GAN, le GauGAN (en référence à Paul
+                    Gauguin) qui répond à cette problématique. Il permet, en effet, de générer des images de scènes ultra-
+                    réalistes. Le GauGAN permet aux utilisateurs de dessiner leurs propres cartes sémantiques et de
+                    manipuler la scène, en étiquetant chaque segment avec des étiquettes comme du sable, le ciel,
+                    la mer ou de la neige. L'outil permet également aux utilisateurs d'ajouter un filtre de style,
+                    de modifier une image générée pour adapter le style d'un peintre particulier, ou de changer une
+                    scène de jour en une scène de crépuscule. L'outil utilisé dans la vidéo se concentre sur des éléments
+                    naturels; terre, ciel ou mer. Cependant le réseau utilisé est aussi capable de générer d'autres
+                    caractéristiques comme des bâtiments, des routes ou des personnes. Prometteur.
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p align="center">
+                    <iframe width="784" height="441" src="https://www.youtube.com/embed/p5U4NgVGAwg" frameborder="0"
+                            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+                </p>
+
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:170%; font-weight:400;">
+                    <b>Conditional GAN</b>
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Dans un modèle génératif non conditionné, il n'y a aucun contrôle sur les modes des données générées.
+                    Dans un GAN conditionnel (CGAN), le générateur apprend à générer un faux échantillon avec une condition
+                    ou des caractéristiques spécifiques (comme une étiquette associée à une image ou une étiquette plus
+                    détaillée) plutôt qu'un échantillon générique à partir d'une distribution de bruit blanc. Ces modèles
+                    fonctionnent sur une grande variété de problèmes. Pour y répondre on a souvent besoin de la même
+                    architecture et on utilise la même fonction objectif. Il convient simplement de s'entraîner sur des
+                    données différentes. Ainsi, on peut, par exemple, générées des images d'oiseaux conditionnellement
+                    à du texte comme dans <a href="https://arxiv.org/abs/1605.05396">l’article</a> de Reed Scott et al.
+                    Une <a href="https://arxiv.org/abs/1612.03242">publication ultérieure</a> de Han Zhanget al. datant
+                    de 2017 propose une solution pour améliorer nettement la résolution des images en sortie, en
+                    appliquant une deuxième série de GAN à cet effet, comme le montre la figure suivante. L'idée est
+                    cependant la même : fournir un texte et générer une image réaliste et représentative de ce texte.
+                    Les résultats obtenus sont plutôt convaincants.
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p align="center">
+                    <img width="784" height="441" src="./assets/images/stack-gan.jpg" class="img-responsive" alt="" align="middle">
+                </p>
+                <p></p>
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:170%; font-weight:400;">
+                    <b>Cycle GAN</b>
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    <i>Image-to-image translation</i> est une classe de problèmes graphiques et visuels dont l'objectif
+                    est d'apprendre la correspondance entre une image d'entrée et une image de sortie en utilisant un
+                    ensemble de paires d'images. Toutefois, pour de nombreuses tâches, les données ne seront pas appariées.
+                    Ainsi les Cycle GANs sont une approche pour apprendre à "translater" une image d'un domaine
+                    source X vers un domaine cible Y en l'absence d'exemples couplés. Le but est ici d'apprendre une cartographie
+                    G:X→Y de sorte que la distribution des images de G(X) ne puisse être distinguée de la distribution Y en
+                    utilisant des GANs. Parce que cette cartographie est fortement sous-contrainte, elle est couplée
+                    avec une cartographie inverse F:Y→X qui introduit la notion de perte de cohérence de cycle afin que
+                    <i>F(G(X)) ≈ X</i> et vice versa.
+                </p>
+
+                <p align="center">
+                    <img width="784" src="./assets/images/cyclegan.jpg" class="img-responsive" alt="" align="middle">
+                </p>
+                <p></p>
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Les applications possibles sont diverses et notamment pour les tâches où il n'existe pas de données
+                    couplées comme le transfert de style, la transfiguration d'objets, le transfert de saison,
+                    l'amélioration des photos, etc.
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+                <p align="center">
+                    <img src="./assets/images/cyclegan-picture.jpg" class="img-responsive" alt="" align="middle">
+                </p>
+                <p></p>
+
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Les importants progrès faits à travers les différentes architectures de GANs ainsi que les
+                    résultats prometteurs ont vite poussé la mise en place d'utilisations artistiques et industrielles
+                    dans le domaine du design génératif notamment.
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:170%; font-weight:400;">
+                    <b>Industrie & Art - Design génératif</b>
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Les réseaux antagonistes commencent en effet à occuper une place de plus en plus conséquente dans
+                    l'art moderne où certains artistes comme Marc Fornes se plaisent à expérimenter le potentiel de
+                    l’outil numérique. Ce dernier "acte une mutation technique et épistémologique engendrée par
+                    l’utilisation des outils de conception et de fabrication assistées par ordinateur".
+                    Au sein de son laboratoire <a href="https://theverymany.com/">theverymany</a>, il fait appel à
+                    l’écriture algorithmique afin de mettre au point des « protocoles explicites et encodés » qui généreront
+                    informatiquement des architectures aux formes singulières.
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Autodesk, société d'édition de logiciels de création et de contenu numérique, a bien compris le potentiel
+                    de ces réseaux génératifs et développe depuis ces dernières années des solutions de design génératif au sein
+                    de ses logiciels. La célèbre <i>Elbo Chair</i> ou encore les semelles d'une récente paire de baskets Under Armour
+                    ont été créées à l'aide de ces derniers. Le succès est total, les baskets par exemple, vendues à $299
+                    la paire ont toutes été écoulées.
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p align="center">
+                    <img width="784" height="441" src="./assets/images/art-generatif.jpg" class="img-responsive" alt="" align="middle">
+                </p>
+                <p></p>
+
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:170%; font-weight:400;">
+                    <b>The DreamCatcher Project by AutoDesk</b>
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Ces solutions de design génératif ont notamment été mises en place dans le projet
+                    <a href="https://autodeskresearch.com/projects/dreamcatcher">DreamCatcher</a>,  logiciel d’assistance
+                    au design par ordinateur. Cet outil novateur est notamment utilisé dans le design automobile
+                    et aéronautique. Ces marchés industriels sont énormes et donc prometteurs pour les applications des
+                    GANs. En effet, le design génératif imite l'approche évolutive de la nature en matière de conception.
+                    Les designers ou ingénieurs saisissent les objectifs liés au design dans le logiciel de conception générative,
+                    ainsi que des paramètres tels que les matériaux, les méthodes de fabrication et les contraintes de coût.
+                    Le logiciel explore alors toutes les permutations possibles d'une
+                    solution et génère rapidement des alternatives de conception. Il teste et apprend de chaque itération
+                    ce qui fonctionne et ce qui ne fonctionne pas. Si l'on reprend les informations vues plus haut, cela
+                    consiste donc à utiliser un GAN conditionnel tout en utilisant les propriétés liées au latent-space
+                    pour générer de nouveaux designs.
+                </p>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Dans la vidéo suivante, le logiciel est tout d'abord utilisé pour générer le corps d'un drone puis
+                    un châssis de voiture ultra-rapide. Les contraintes qui s'exercent sur la voiture sont tout d'abord
+                    mesurées à l'aide de capteurs, puis, fournies au logiciel pour optimisation. En résulte un châssis
+                    généré informatiquement et totalement atypique mais cependant plus léger et plus performant.
+                    Grâce à cette solution logicielle Airbus a également pu équiper ses nouveaux Airbus A320 d'une cloison
+                    tout aussi solide mais deux fois plus légère. Cela répond évidemment à des problématiques liées au
+                    avion du futur et à la necessité d'améliorer notamment le ratio performance sur quantité de fuel.
+                 </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+                <p align="center">
+                    <iframe width="784" height="441" src="https://www.youtube.com/embed/CtYRfMzmWFU" frameborder="0"
+                            allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
+                </p>
+
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:170%; font-weight:400;">
+                    <b>Industrie de la mode - Make-up transfer by Nabla</b>
+                </p>
+
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Le marché de la mode et du luxe est également un marché à très forte valeur et les GANs et plus
+                    précisément les Cycle GANs ont également leur rôle à jouer dans le développement de ce marché. Cela,
+                    la start-up <a href="https://www.nabla.com/">Nabla</a>, fondée par des anciens de Facebook, l'a
+                    bien compris. Elle a notamment développé une application dans le domaine du cosmétique et plus
+                    précisément du transfert de maquillage afin par exemple de pouvoir tester si un maquillage réalisé
+                    sur une autre personne pourrait vous correspondre. Les résultats sont impressionnants et comme on
+                    peut le voir sur l'image suivante le transfert de style n'est appliqué qu'au maquillage. Que ce soit
+                    la couleur des cheveux ou la couleur de peau, tout cela reste inchangé.
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p align="center">
+                    <img width="784" height="441" src="./assets/images/nabla.jpg" class="img-responsive" alt="" align="middle">
+                </p>
+                <p></p>
+
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:170%; font-weight:400;">
+                    <b>Génération pour les jeux vidéos</b>
+                </p>
+
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Les jeux vidéo sont devenus de vrais blockbusters avec des budgets dignes des productions hollywoodiennes.
+                    Des jeux comme GTA ou Call of Duty ont des coûts de production entre 200 et 300 millions de dollars.
+                    Dans la course au réalisme et à l’immersion, les studios investissent des budgets significatifs pour créer
+                    des maps tentaculaires et des nouveaux décors qui permettent à chacun d’explorer le jeu de façon inédite.
+                    Les GANs peuvent permettre aux éditeurs de générer des maps et des décors très réalistes en temps réel en
+                    fonction des déplacements dans le jeu des personnages. La « taille » des jeux devient alors infinie sans
+                    surcoût significatif de développement. Ici il s'agit d'utiliser un GAN conditionné par les dessins
+                    simplistes réalisés par le développeur sur sa tablette; à chaque forme colorée (en haut à gauche des images
+                    générées) correspond une représentation physique en termes de décors : rivières, vallées, pic rocheux.
+                    L'entraînement se fait à partir d'images réelles comme celle tout en haut à droite.
+                </p>
+
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p align="center">
+                    <img src="./assets/images/video-game.jpg" class="img-responsive" alt="" align="middle">
+                </p>
+                <p></p>
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:170%; font-weight:400;">
+                    <b>Behind the scenes - Evil AI ?</b>
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Lorsque l'on voit toutes ces applications, les GANs ça a l’air quelque chose de vraiment formidable
+                    avec des avancées bénéfiques dans tous les domaines. Mais n'y a-t-il que cela ? Comme toute technologie,
+                    les GANs ont leur penchant néfaste.
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+                <p align="center">
+                    <img width="590" height="330" src="./assets/images/evil-ai.gif" class="img-responsive" alt="" align="middle">
+                </p>
+                <p></p>
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    En effet, les GANs peuvent également permettre d'influencer les opinions. Le parallèle avec Cambridge
+                    Analytica et plus généralement les fake news est facile. Ces deux vidéos montrent la puissance de
+                    manipulation que peuvent avoir les GANs sur un public même averti. Même si le trucage photo ou vidéo
+                    est loin d'être nouveau, l'intelligence artificielle a complètement changé la donne. Jusqu'à récemment,
+                    seul un studio de cinéma à gros budget pouvait réaliser un échange de visage sur une vidéo, et cela
+                    aurait probablement coûté des millions de dollars. L'IA permet aujourd'hui à toute personne disposant
+                    d'un ordinateur décent et de quelques heures de temps libre de faire la même chose. Au fil du temps,
+                    d'autres progrès de l'apprentissage automatique rendront ces deep fakes encore plus complexes et bien
+                    plus difficiles à déceler. La nécessité d'adaptation sera alors fondamentale - à moins qu'elle ne le soit
+                    déjà actuellement.
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+                <p align="center">
+                    <span>
+                      <iframe width="560" height="315" src="https://www.youtube.com/embed/iHv6Q9ychnA" frameborder="0" allow="accelerometer;
+                      encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </span>
+                    <span>
+                         <iframe width="560" height="315" src="https://www.youtube.com/embed/cQ54GDm1eL0?start=20" frameborder="0"
+                                 allow="accelerometer;encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                         </iframe>
+                   </span>
+                </p>
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Dans le domaine de la cyber-sécurité l'apprentissage automatique a été utilisé
+                    pour détecter de nouveaux logiciels malveillants ces
+                    dernières années, tandis que les auteurs de ces logiciels malveillants sont fortement motivés pour
+                    duper ces algorithmes de détection. Cependant ils n'ont généralement pas accès aux
+                    structures détaillées et aux paramètres des modèles d'apprentissage automatique utilisés par les
+                    systèmes de détection, et ne peuvent donc exécuter que des attaques par
+                    boîte noire. Un algorithme génératif basé sur les GANs appelé MalGAN peut générer des adversarial
+                    malwares, capables de contourner les modèles de détection, bien qu'inconnus par les attaquants,
+                    basés sur l'apprentissage automatique.
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Le MalGAN utilise un détecteur de substitution pour s'adapter au système de détection.
+                    Un réseau génératif est entrainé pour minimiser la probabilité de détection
+                    par le détecteur de substitution des exemples contradictoires générés. D'après les résultats de
+                    l'article, dans les conditions de test, la force de pénétration des malwares créés par le MalGAN
+                    a été totale et a permis de réduire le taux de détection à presque zéro.
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+                <p align="center">
+                    <img width="784" height="441" src="./assets/images/malgan.jpg" class="img-responsive" alt="" align="middle">
+                </p>
+                <p></p>
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Tromper les systèmes de "vision" des voitures autonomes en générant des <a href="./article1.html#adversarial">
+                        adversarial examples</a> ou exemples contradictoires c'est possible et ça fait parfois froid dans le dos.
+                    Cet <a href="https://openreview.net/forum?id=S1SED1MYe&noteId=S1SED1MYe">article</a> expliquent
+                    comment cela est possible et montrent que de tels systèmes se devront d'être toujours plus robustes et sécurisés.
+                    En effet, si les exemples précedemment impliquaient la perte d'argent ou de données privées, ici,
+                    c'est clairement la vie des utilisateurs qui sera en "jeu".
+                </p>
+
+                <div style="height:20px;font-size:20px;">&nbsp;</div>
+                <p align="center">
+                    <img width="784" height="441" src="./assets/images/adversarial-car.jpg" class="img-responsive" alt="" align="middle">
+                </p>
+                <p></p>
+                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
+
+                <p align="center">
+
+                </p>
+
+                <p align="center">
+
+                </p>
+
+                <p align="center">
+
+                </p>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<footer class="footer-container text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p style="text-align:left"><sup>&#42;</sup>Fausse citation afin d'illustrer le propos de l'article</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function (event) {
+        navActivePage();
+    });
+</script>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID 
+
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date(); a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+  ga('create', 'UA-XXXXX-X', 'auto');
+  ga('send', 'pageview');
+</script>
+
+-->
+<script type="text/javascript" src="./main.70a66962.js"></script>
+</body>
+
+</html>
