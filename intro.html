@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+    
+    
 <head>
     <meta charset="UTF-8">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
@@ -88,34 +90,41 @@
             </div>
 
             <div class="col-xs-12">
+                
+                <p style="text-align:justify; font-size:170%; font-weight:500;">
+                    <b>Reinforcement Learning : Branche de Machine Learning</b>
+                </p>
 
                 <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    Bien que le terme intelligence artificielle soit né en 1950 dans un article publié par Alan Turing
-                    « Computing Machinery and Intelligence », sa mise en pratique et les avancées technologiques qui y
-                    sont liées n'auront jamais été aussi performantes que depuis ces dernières années.
-                    Néanmoins, l’IA en tant que domaine scientifique existe depuis 1956 suite à la conférence
-                    tenue au Darmouth College, ce qui sonne le début de
-                    <a href="https://siecledigital.fr/2018/08/20/histoire-intelligence-artificielle/">l’histoire de
-                        l’intelligence artificielle</a>. Aujourd’hui, elle vient de pair avec d’autres termes comme
-                    algorithme, machine learning, réseau de neurones artificiels ou deep learning notamment. Voyons
-                    ensemble ce qui hiérarchise tout cela.</p>
+                    En machine learning, on distingue principalement 3 paradigmes d'apprentissage et qui sont imposés
+                    par le type de tâches qu'on cherche à effectuer ainsi que les données à disposition.
+                    Ces types d'apprentissage sont :
+                    <ul style="text-align:justify; font-size:160%; font-weight:400;">
+                        
+                        <li>Supervised Learning (apprentissage supervisé) : Dans ce contexte, nous disposons de variables d'entrée (x),
+                            une variable de sortie (Y) et nous utilisons un algorithme pour apprendre le mapping entre
+                            l'entrée et la sortie. Le terme "supervisé" vient du fait que l'apprentissage d'un algorithme 
+                            à partir d'un ensemble de données peut être considéré comme un enseignant qui supervise 
+                            le processus d'apprentissage :  Nous connaissons les bonnes réponses, l'algorithme fait des 
+                            prédictions itératives sur les données de formation et est corrigé par l'enseignant et cet apprentissage 
+                            s'arrête lorsque l'algorithme atteint un niveau de performance acceptable. </li>
+                        
+                        <li>Unsupervised Learning (apprentissage non supervisé) : Cas où nous n'avons que des données d'entrée (X) 
+                            et aucune variable de sortie correspondante. L'objectif du framework non supervisé est de modéliser 
+                            la structure ou la distribution sous-jacente (latente) des données. Dans l'apprentissage non supervisé, 
+                            il n'y a pas de bonnes réponses et donc pas d'enseignant : Les algorithmes sont livrés eux-mêmes pour découvrir 
+                            et présenter la structure intéressante des données.</li>
+                        
+                        <li>Reinforcement Learning (apprentissage par renforcement) :  L'apprentissage par renforcement est un aspect du machine
+                            learning entièrement différent : Un agent apprend à se comporter dans un environnement, 
+                            en effectuant certaines actions puis en observant les récompenses/résultats qu'il obtient à partir de ces actions.
+                            Une boucle est alors en place où l'interactio</li>
+                    </ul>
+                </p>
 
                 <div style="height:20px;font-size:20px;">&nbsp;</div>
 
-                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    Tout d’abord, sous le terme intelligence artificielle (IA) on regroupe l’ensemble des « théories et
-                    des techniques mises en œuvre en vue de réaliser des machines capables de simuler l’intelligence ».
-                    On distingue l’IA faible de l’IA forte. Par définition, l’IA faible est un programme qui n’est pas
-                    doté de sens et se concentre uniquement sur la tâche pour laquelle il a été programmé.
-                    On l'oppose à l’IA forte, qui, elle, est dotée de conscience et donc d’une sensibilité
-                    particulière. Cependant, l’IA forte reste encore du domaine de la science-fiction.
-                    Toutes les intelligences artificielles que nous croisons dans la réalité sont faibles.
-                    Ce sont les technologies capables d'accomplir des tâches spécifiques aussi bien, voire mieux, que
-                    nous, les humains. Des exemples d'intelligence artificielle faible sont la classification d'images
-                    ou la reconnaissance faciale. Ces technologies présentent certaines
-                    facettes de l'intelligence humaine. Mais comment ? D'où vient cette intelligence ? Cela nous amène au terme
-                    suivant, le machine learning ou apprentissage automatique.
-                </p>
+             
 
                 <div style="height:20px;font-size:20px;">&nbsp;</div>
 
@@ -145,39 +154,9 @@
                     de neurones artificiels.
                 </p>
 
-                <div style="height:20px;font-size:20px;">&nbsp;</div>
+               
 
-                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    Si le terme « réseau de neurones » apparaît depuis peu dans les médias, c’est qu’il était très
-                    difficile à mettre en place jusqu’à récemment.
-                    En effet, tenter de faire raisonner un programme comme raisonne le cerveau humain nécessite une puissance
-                    informatique conséquente. C’est pour cette raison que les théories étaient fréquentes, mais
-                    aucune application ne voyait le jour. Pourtant cette approche est née avec les premières réflexions
-                    sur l’intelligence artificielle dans les années 1950. Pour comprendre le fonctionnement d’un réseau
-                    de neurones (artificiel), il faut imaginer plusieurs couches, avec des connexions entre elles.
-                    Chaque couche peut correspondre à une tâche, et chaque neurone
-                    a une mission bien précise. Au départ, le réseau se trompe, beaucoup, vraiment beaucoup. À force de
-                    confronter ses résultats avec la réalité, à force de voir différentes images, il apprend.
-                    C’est à partir de ce fonctionnement, et grâce, encore une fois, au développement des capacités de calcul
-                    des ordinateurs, qu’est né le deep learning.
-                </p>
-
-                <div style="height:20px;font-size:20px;">&nbsp;</div>
-
-                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    En effet, c’est en 2012 que l’IA explose véritablement. À ce moment-là, Nvidia sort sur le marché
-                    ses processeurs graphiques (GPU) ultra-performants. A l’époque, pour Andrew Ng, cofondateur de Google Brain,
-                    l’exploitation de ces GPU pourrait créer
-                    des systèmes d’apprentissage profond jusqu’à 100 fois plus rapides. L’entraînement des algorithmes
-                    passerait de
-                    plusieurs semaines à seulement quelques jours. Ce sera bien le cas et la vaste disponibilité des GPU
-                    permettra de
-                    créer des traitements parallèles pour les programmes et ainsi les rendre plus rapides, moins chers,
-                    et même plus
-                    puissants. Ajoutons à cela, depuis 2015, la quantité astronomique de données que l’on peut utiliser
-                    et stocker,
-                    et les intelligences artificielles ont depuis tout pour s’épanouir.
-                </p>
+            
 
                 <div style="height:20px;font-size:20px;">&nbsp;</div>
 
@@ -210,22 +189,6 @@
                     des erreurs telles
                     que des oreilles manquantes.</p>
 
-                <div style="height:20px;font-size:20px;">&nbsp;</div>
-
-                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    Un soir de 2014, suite à un débat avec des amis à lui dans un pub de Montréal, Ian Goodfellow eu
-                    l’idée d’appliquer la théorie
-                    des jeux entre deux réseaux de neurones en les opposant afin de générer des images plausibles. Un
-                    des réseaux apprendrait
-                    la distribution des données fournies dans le dataset et générerait ainsi des exemples similaires. Le
-                    second essayerait de
-                    distinguer les exemples générés des exemples réels permettant au premier de modifier ses paramètres
-                    dans un effort
-                    d’amélioration. Ce qu'il a inventé cette nuit-là s'appelle désormais un GAN, à savoir Generative
-                    Adversarial Network ou réseau antagoniste
-                    génératif. Cette technique a suscité un immense enthousiasme dans le domaine de l'apprentissage
-                    automatique et a
-                    transformé son créateur en une célébrité de l'IA.</p>
 
                 <div style="height:20px;font-size:20px;">&nbsp;</div>
 
@@ -271,51 +234,6 @@
                     données sans (presque) aucune indication extérieure.</p>
 
                 <div style="height:20px;font-size:20px;">&nbsp;</div>
-
-                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    Cela marquera une grande avancée dans ce que l’intelligence artificielle appelle « l'apprentissage
-                    non supervisé ».
-                    Une voiture autonome pourrait par exemple apprendre par elle-même diverses conditions de circulation
-                    sans même
-                    quitter son garage.</p>
-
-                <div style="height:20px;font-size:20px;">&nbsp;</div>
-
-                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    Notre capacité d’imagination et de réflexion sur de nombreux scénarios différents les uns des autres
-                    est en partie ce qui fait de nous des humains. Certains voient les GANs comme un grand pas en avant
-                    dans la création de machines avec un semblant de conscience humaine ; bien qu'on en soit encore très loin.
-                    De grands noms dans le domaine de l'IA en ont également parlé avec beaucoup d'enthousiasme.
-                    Yann LeCun, scientifique en chef de l'IA chez Facebook, a qualifié les GANs « d'idée la plus cool en
-                    matière
-                    d'apprentissage profond au cours des dix dernières années ». Andrew Ng, l'ancien scientifique en
-                    chef du chinois
-                    Baidu, a déclaré que les GANs représentaient « une avancée significative et fondamentale » qui a
-                    inspiré une
-                    communauté mondiale croissante de chercheurs.</p>
-
-                <div style="height:20px;font-size:20px;">&nbsp;</div>
-
-                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    L'engouement vis-à-vis de la technologie est justifié. Les GANs ont obtenu des résultats
-                    remarquables, longtemps
-                    impossibles pour des systèmes artificiels, tels que la capacité de générer des images réalistes ou
-                    de transformer
-                    une séquence vidéo d'un cheval en mouvement en un zèbre, le tout sans la nécessité de disposer de
-                    données
-                    d'entraînement soigneusement étiquetées. Contrairement à d’autres progrès de l’apprentissage
-                    automatique,
-                    le succès des GANs a dépassé le simple monde de la recherche et a su attirer l’attention du grand
-                    public,
-                    là où d’autres technologies ne suscitaient auparavant qu’un simple regard interrogateur. En effet,
-                    les réseaux
-                    génératifs ont été mis en avant par le New York Times, la BBC, Scientific American et de nombreux
-                    autres médias
-                    de premier plan. Autre témoignage de l’attrait de cette technologie,
-                    <a href="https://www.ladn.eu/tech-a-suivre/art-et-intelligence-artificielle-decouvrez-le-collectif-obvious/">
-                        un portrait réalisé par un GAN
-                    </a>
-                    a récemment été vendu aux enchères de Christie’s pour plus de 430 000 dollars.</p>
 
                 <div style="height:20px;font-size:20px;">&nbsp;</div>
 
