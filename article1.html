@@ -60,12 +60,10 @@
                     <div class="text-center">
                         <h1 class="h2">Reinforcement Learning : Théorie</h1>
                     </div>
-                    <p style="text-align:center; font-size:120%;">Cet article présente les bases théoriques du Reinforcement Learning</p>
+                    <p style="text-align:center; font-size:120%;">
+                        Cet article présente les bases théoriques du Reinforcement Learning
+                    </p>
 
-                    <blockquote>
-                        <p>“What I Cannot Create, I Do Not Understand”</p>
-                        <small class="pull-right">Richard Feynman</small>
-                    </blockquote>
                 </div>
             </div>
 
@@ -73,12 +71,12 @@
             <div class="col-md-8 col-md-offset-2 section-container-spacer">
                 <div class="row">
                     <div class="col-xs-12 col-md-6">
-                        <img src="./assets/images/work001-02.jpg" class="img-responsive" alt="">
-                        <p>Saliency Map : compréhension d'un concept</p>
+                        <img src="./assets/images/rl_article1.png" class="img-responsive" alt="">
+                        <p>Saliency Interaction Agent - Environnement </p>
                     </div>
                     <div class="col-xs-12 col-md-6">
-                        <img src="./assets/images/work001-03.jpg" class="img-responsive" alt="">
-                        <p>Une IA forte est-elle possible ?</p>
+                        <img src="./assets/images/rl2_article1.png" class="img-responsive" alt="">
+                        <p>Réseaux de neurones profonds et RL</p>
                     </div>
                 </div>
             </div>
@@ -129,51 +127,61 @@
                 </p>
                     <ul style="text-align:justify; font-size:160%; font-weight:400;">
                         
-                        <li><b>Agent</b> : entité hypothétique qui accomplit des actions dans un environnement dans le but
+                        <li><b>Agent</b> : Entité hypothétique qui accomplit des actions dans un environnement dans le but
                             d'obtenir une certaine récompense. </li>
-                        <div style="height:15px;font-size:10px;">&nbsp;</div>
-                        
-                        <li><b>Action(a) :</b> Tous les mouvements possibles que l'agent peut prendre. </li>
-                        <div style="height:15px;font-size:10px;">&nbsp;</div>
-                        
-                        <li><b>Environnement (e) :</b> Un scénario auquel l'agent doit faire face.</li>
                         <div style="height:15px;font-size:10px;">&nbsp;</div>
                         
                         <li><b>État(s) :</b> Situation actuelle retournée par l'environnement.</li>
                         <div style="height:15px;font-size:10px;">&nbsp;</div>
-
-                        <li><b>Récompense (R) :</b> Un retour immédiat de l'environnement pour évaluer la dernière action de l'agent.</li>
+                        
+                        <li><b>Action(a) :</b> Tous les mouvements possibles que l'agent peut prendre, celles-ci peuvent dépendre 
+                                                de l'état présent. </li>
                         <div style="height:15px;font-size:10px;">&nbsp;</div>
                         
-                        <li><b>Stratégie(π) :</b> La stratégie que l'agent utilise pour déterminer la prochaine action en fonction 
-                            de l'état actuel. </li>
+                        <li><b>Environnement (e) :</b> Un scénario auquel l'agent doit faire face.</li>
+                        <div style="height:15px;font-size:10px;">&nbsp;</div>
+                       
+                        <li><b>Récompense (R) :</b> Retour de l'environnement permettant d'évaluer la dernière action de l'agent.</li>
+                        <div style="height:15px;font-size:10px;">&nbsp;</div>
+                        
+                        <li><b>Stratégie(π) :</b> Il s'agit d'une distribution de probabilités sur les actions étant donné les états, 
+                            c'est-à-dire comment l'agent choisit ses actions étant donné qu'il se trouve dans un certain état. 
+                            Il pourrait s'agir d'une stratégie déterministe que nous voulons "apprendre" de l'expérience, 
+                            ou une stratégie stochastique.</li>
                     </ul>
                 </p>
-        
+            
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Muni de cela, nous pouvons désormais réfléchir à ce que nous voulons maximiser dans un problème de RL, en d'autres termes,
+                    nous voulons bien déterminer un équivalent à la fonction de coût dans un problème classique de Machine Learning. <br>
+                    C'est ici qu'intervient la <b>la fonction de valeur (Value Function)</br> : C'est une fonction qui nous dit à quel point
+                    chaque état et/ou action est bon, c'est-à-dire à quel point il est bon d'être dans un état particulier, et à quel point 
+                    il est bon d'entreprendre une action particulière. <br>
+                    La fonction informe l'agent du montant de la récompense à attendre s'il prend une mesure particulière dans un État donné.
+                    <div style="height:10px;font-size:10px;">&nbsp;</div>
+                    Dans un état donné S et à l'instant t, la fonction de valeur informe l'agent de la <b>somme attendue (espérance)
+                    des récompenses futures pour une stratégie adoptée 𝜋, de manière à choisir la bonne action qui maximise 
+                    cette espérance. Mathématiquement, cela correspond à : 
+                    
+                    <div style="height:15px;font-size:15px;">&nbsp;</div>
+                    <p align="center">
+                        <img src="./assets/images/value_func.PNG" class="img-responsive" alt="" align="middle">
+                    </p>
+                    <div style="height:15px;font-size:15px;">&nbsp;</div>
 
-
-
-                <div style="height:20px;font-size:20px;">&nbsp;</div>
-                <p align="center">
-                    <img src="./assets/images/gan-metaphore.jpg" class="img-responsive" alt="" align="middle">
+                    𝛾 est un facteur d'actualisation, où 𝛾 ∈ ∈ [0, 1]. Il informe l'agent de l'importance qu'il doit accorder 
+                    aux récompenses actuelles et futures : 
+                    <ul style="text-align:justify; font-size:160%; font-weight:400;">
+                        <li>𝛾 = 0 correspond à l'agent est myope : c'est-à-dire qu'il ne se soucie que de la première récompense. </li>
+                        <li>𝛾 = 1 correspond à l'agent à une vision à long terme : c'est-à-dire qu'il se soucie de toutes les 
+                            récompenses futures.</li>
+                    </ul>
+                    
+                    
                 </p>
-                <p></p>
-                <div style="height:30px;font-size:20px;">&nbsp;</div>
 
-                <div style="height:30px;font-size:20px;">&nbsp;</div>
-                <p align="center">
-                    <img src="./assets/images/gan-principe.jpg" class="img-responsive" alt="" align="middle">
-                </p>
-                <p></p>
-                <div style="height:30px;font-size:20px;">&nbsp;</div>
 
-    
-                <div style="height:20px;font-size:20px;">&nbsp;</div>
-                <p align="center">
-                    <img src="./assets/images/nets-fool.jpg" class="img-responsive" alt="" align="middle">
-                </p>
-                <p></p>
-                <div style="height:30px;font-size:20px;">&nbsp;</div>
+
 
 
 
