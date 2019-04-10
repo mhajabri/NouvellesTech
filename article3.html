@@ -88,6 +88,7 @@
                     pourrions créer une stratégie rentable en utilisant une approche d'apprentissage supervisé. 
                     Ensuite, nous expliquerons ce qui pose problème à avec cette approche et pourquoi des techniques 
                     de RL peuvent s'avérer plus efficaces.
+                    <div style="height:20px;font-size:20px;">&nbsp;</div>
 
                     L'approche la plus intuitive consiste à penser le problème comme prédiction des prix des actifs : 
                     Si nous pouvons prédire que le marché augmentera, nous pouvons acheter maintenant et vendre une fois que 
@@ -95,17 +96,82 @@
                     nous pouvons être short (emprunter un actif que nous ne possédons pas) et ensuite acheter une fois 
                     que le marché a évolué.<br>
                     Cela paraît très simple, mais en fait plusieurs questions se posent :
+                    <ul style="text-align:justify; font-size:160%; font-weight:400;">
                     
-                    Tout d'abord, quel est le prix que nous prévoyons réellement ? Il n'y a pas un seul prix auquel nous achetons : 
-                    Le prix final que nous payons dépend du volume disponible aux différents niveaux du carnet de commandes 
-                    et des frais que nous devons payer. <br>
-                    Une chose naïve à faire est de prédire le prix moyen, qui est le point médian entre le meilleur cours acheteur
-                    et le meilleur cours vendeur. Cependant, il ne s'agit que d'un prix théorique, et non d'un prix auquel nous
-                    pouvons exécuter des ordres, et il pourrait différer considérablement du prix réel que nous payons.
+                        <li>Tout d'abord, quel est le prix que nous prévoyons réellement ? Il n'y a pas un seul prix auquel nous achetons : 
+                        Le prix final que nous payons dépend du volume disponible aux différents niveaux du carnet de commandes 
+                        et des frais que nous devons payer. <br>
+                        Une chose naïve à faire est de prédire le prix moyen, qui est le point médian entre le meilleur cours acheteur
+                        et le meilleur cours vendeur. Cependant, il ne s'agit que d'un prix théorique, et non d'un prix auquel nous
+                        pouvons exécuter des ordres, et il pourrait différer considérablement du prix réel que nous payons.</li>
+                        <div style="height:15px;font-size:10px;">&nbsp;</div>
 
-                    La question suivante est celle de l'échelle de temps. Prévoyons-nous le prix de la prochaine transaction ?
-                    Le prix à la seconde suivante ? Une minute ? Une heure ? Jour ? Intuitivement, plus nous voulons prédire l'avenir,
-                    plus l'incertitude est grande et plus le problème de prédiction devient difficile.
+                        <li>La question suivante est celle de l'échelle de temps. Prévoyons-nous le prix de la prochaine transaction ?
+                        Le prix à la seconde suivante ? Une minute ? Une heure ? Jour ? Intuitivement, plus nous voulons prédire l'avenir,
+                        plus l'incertitude est grande et plus le problème de prédiction devient difficile.</li>
+                    </ul>
+                    <div style="height:20px;font-size:20px;">&nbsp;</div>
+                    
+                    Pour traduire ces limitations, considérons un exemple concret : Supposons que nous ayons un actif <b>A</b> avec une valeur initiale
+                    de départ de P=10,000$. Supposons que nous puissions prédire avec précision que le prix passe de P à 10,050$ dans la minute
+                    qui suit. Logiquement, cela signifierait que si nous pouvons réaliser un gain de 50$ en achetant à t=0 et en revendant
+                    à t+1, sauf que ...
+                    <ul style="text-align:justify; font-size:160%; font-weight:400;">
+                    
+                        <li> Un problème peut survenir avec le volume recquis et le prix de vente de <b>A</b> pourrait passer de 10,000$
+                            à 10,010$ dès que l'on achète la moitié d'une unité. Donc au final, nous aurons dépensé 10,005$ pour l'achat
+                            d'une unité entière de <b>A</b>. </li>
+                        <div style="height:15px;font-size:10px;">&nbsp;</div>
+
+                        <li>Des coûts de transaction vont certainement survenir (comission du courtier par exemple). Elle sont souvent
+                            de l'ordre de 0.3%, ce qui correspondrait ici à 30$</li>
+                        <div style="height:15px;font-size:10px;">&nbsp;</div>
+                        
+                        <li>En raison de la vitesse à laquelle le marché évolue, lorsque nous décidons de vendre à un prix donné, 
+                            il est possible que toute la quantité ne soit pas vendue à ce prix (comme lorsque nous voulions acheter). 
+                            Nous allons donc finir par vendre pour un total de 10.045$ par exemple.<br>
+                            Aussi, nous supposons que nous avons des coûts de transaction lors de l'opération de vente aussi, 
+                            toujours de l'ordre de 30$.</li>
+                    </ul>
+                    <div style="height:20px;font-size:20px;">&nbsp;</div>
+                    Au moment du bilan, combien d'argent avons-nous gagné ? -10005 - 30 - 30 + 10045 = -20 !  
+                    <b>Au lieu de faire 50$, nous avons perdu 20$.</b> <br>
+                
+                    Quelles leçons pouvons-nous tirer de cet exemple ? 
+                   <ul style="text-align:justify; font-size:160%; font-weight:400;">
+                    
+                        <li> Afin de faire des bénifices à partir d'une simple stratégie de prédiction des prix, nous devons prédire
+                            des mouvements de prix relativement importants sur de plus longues  périodes de temps, ce qui en soit
+                            représente un problème très difficile (plus la période est longue plus l'incertitude est grande). </li>
+                        <div style="height:15px;font-size:10px;">&nbsp;</div>
+
+                        <li>Un autre problème avec l'apprentissage supervisé : Nous ne récupérons pas / n'apprenons pas une stratégie
+                            de trading.<br>
+                            Dans l'exemple ci-dessus, nous avons acheté parce que nous avions prédit que le prix augmenterait, 
+                            et il a en effet augmenté. Tout s'est déroulé comme prévu. Mais qu'aurions nous fait si le prix avait baissé ? 
+                            Vendre ou Garder l'actif et attendre de voir son évolution ultérieure ? 
+                            Que se serait-il passé si le prix avait augmenté un peu, puis redescendu ? Que se serait-il passé si nous n'avions pas été certains 
+                            de la prédiction, par exemple 55 % en hausse et 45 % en baisse ? Comment choisir le seuil pour passer un ordre? <br>
+                            Le modèle supervisé n'apporte aucune information par rapport à toutes ces situations, il ne peut fournir que des probabilités ou des 
+                            sorties binaires ici.
+                       </li>
+                        <div style="height:15px;font-size:10px;">&nbsp;</div>
+                        
+                        <li>En raison de la vitesse à laquelle le marché évolue, lorsque nous décidons de vendre à un prix donné, 
+                            il est possible que toute la quantité ne soit pas vendue à ce prix (comme lorsque nous voulions acheter). 
+                            Nous allons donc finir par vendre pour un total de 10.045$ par exemple.<br>
+                            Aussi, nous supposons que nous avons des coûts de transaction lors de l'opération de vente aussi, 
+                            toujours de l'ordre de 30$.</li>
+                    </ul>
+                
+                    A partir de l'analyse de l'exemple précédent et les limitations observées du modèle supervisé, nous comprenons que
+                    nous avons besoin de plus qu'un simple modèle de prédiction de prix : Nous avons besoin d'une politique (stratégie)
+                    fondée sur des règles qui tient compte des prédictions de prix (qui ne deviennent donc qu'une sous partie du modèle global) 
+                    et qui décide ce qu'il faut faire : Passer une commande, ne rien faire, annuler une commande, etc. <br> 
+                    Comment en arriver à une telle politique ? Comment optimiser les paramètres des politiques et les seuils 
+                    de décision ? La réponse à cela n'est pas évidente, et beaucoup de gens utilisent l'heuristique simple ou l'intuition 
+                    humaine. C'est en fait ici qu'intervient toute l'utilité d'un modèle basé sur l'apprentissage par renforcement.
+
                 </p>
                 
                 
@@ -117,36 +183,7 @@
                 <div style="height:30px;font-size:20px;">&nbsp;</div>
 
 
-                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    Cependant bien que l'IA est pour l’instant un ensemble de
-                    techniques qui s’améliorent peu à peu, on reste encore très éloigné de l’androïde conscient et
-                    immortel des films de science-fiction. D'après Jean-Gabriel Ganascia, auteur du livre
-                    <a href="https://www.les-philosophes.fr/technique/mythe-de-la-singularite.html">
-                        « Le mythe de la Singularité »
-                    </a>,
-                    le développement futur –
-                     vers 2030 pour Raymond Kurzweil – d’une intelligence artificielle omnisciente et dangereuse est « une supercherie ».
-                    « Le vrai problème ce n'est pas la Singularité dont on ne sait si elle adviendra,
-                    c'est l'engouement irrationnel pour ces thèses, les passions qu’elles suscitent,
-                    qui empêchent de réfléchir aux vraies questions posées par les technologies ».
-                    Ainsi, même si nous sommmes aujourd'hui loin d’une intelligence artificielle générale; moins
-                    pour certains, il s'avère important de développer une conscience numérique vis à vis de ces progrès
-                    technologiques, un esprit critique. Deux projets ont été développés en ce sens à l’Université de Washington.
-                </p>
-
-                <div style="height:20px;font-size:20px;">&nbsp;</div>
-
-                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    Le premier projet cherche à développer chez les utilisateurs une prise de conscience vis à vis de
-                    la facilité de tromper les gens à partir d'identités digitales.
-                    En effet, si nous avons appris à nous méfier des noms d'utilisateur et des textes en général,
-                    avec les images c'est plus difficile. Pour un humain il est quasi impossible de synthétiser une
-                    image à partir de rien. Nous avons donc tendance à supposer qu'une image est bien celle de quelqu'un.
-                    Or, aujourd'hui, ce n'est plus forcément le cas. Avec ces nouveaux algorithmes génératifs les fausses
-                    identités digitales sont désormais de plus en plus complexes. Ici pas de recherche inversée possible
-                    à partir d'une photo, la personne n'existe pas. Il devient donc essentiel pour les "citoyens numériques"
-                    de pouvoir démêler le vrai du faux.
-                </p>
+      
 
                 <div style="height:20px;font-size:20px;">&nbsp;</div>
                 <p align="center">
@@ -166,21 +203,6 @@
 
                 <div style="height:20px;font-size:20px;">&nbsp;</div>
 
-                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    Le second projet se veut encore plus ambitieux et vise à former les citoyens d'aujourd'hui et
-                    de demain dans un peu monde de plus en plus numérisé.
-                    Les politiciens, les universitaires, les annonceurs, tous s'adressent à un paysage médiatique qui
-                    met en avant les propos courts et percutants et délaisse parfois trop souvent la réflexion et
-                    l'analyse tout en utilisant parfois des données erronées pour étayer leurs affirmations.
-                    Trop d'informations que nous consommons, selon Jevin West et Carl Bergstrom, sont des "conneries".
-                    West, professeur adjoint à l'École "Information School", et Bergstrom, professeur de biologie, espèrent
-                    apprendre aux gens à réfléchir de façon critique à ce qu'on leur dit. À cette fin, ils ont proposé
-                    un nouveau cours, <a href="https://callingbullshit.org/index.html">
-                        "Calling Bullshit in the Age of Big Data."</a>
-                    "Nous avons l'impression que le monde est devenu sursaturé de conneries et nous en avons assez",
-                    ont-ils écrit sur le site Web du cours, qui comprend un syllabus, des lectures et des études de cas.
-                    "Aussi modeste soit-il, cette voie est notre tentative de riposte."
-                </p>
 
                 <div style="height:20px;font-size:20px;">&nbsp;</div>
                 <p align="center">
@@ -189,31 +211,8 @@
 
                 <div style="height:30px;font-size:20px;">&nbsp;</div>
 
-                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    Ils ont l'intention de le faire en donnant aux élèves les compétences nécessaires pour réfléchir de
-                    façon critique aux données présentées comme preuves dans le domaine des sciences sociales et naturelles.
-                    Ils veulent que les élèves apprennent à reconnaître quand les affirmations ne sont pas étayées par des
-                    faits et qu'ils soient capables d'expliquer aux autres pourquoi ils ne devraient pas prendre certaines
-                    allégations pour argent comptant. Les données étant souvent manipulées pour étayer les arguments des gens,
-                    la capacité de distinguer
-                    le signal du bruit est essentielle selon M. West. "Dans mon domaine, nous passons beaucoup de temps
-                    à construire des outils logiciels, des outils de visualisation, des outils algorithmiques. Ainsi,
-                    de plus en plus de gens s'intéressent à ce genre de données", a déclaré M. West à la Chronique de
-                    l'enseignement supérieur. Pour lui même si de plus en plus de beaux graphiques sont produits, cela
-                    s'accompagne de nombreuses erreurs dans les arguments et dans la façon dont les données sont
-                    présentées.
-                </p>
 
-                <div style="height:20px;font-size:20px;">&nbsp;</div>
 
-                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    Le développement de telles démarches s'avèrent donc nécessaire dans un monde en pleine transition.
-                    L'intelligence artificielle est en train d'impacter nos vies dans de nombreux domaines. Les
-                    changements seront nombreux et parfois inévitables, c'est pour cela que notre société se doit
-                    d'accompagner ces changements et d'y réfléchir au préalable afin de ne pas les subir. Il est donc
-                    essentiel que des sujets comme l'éthique de l'IA, l'open data, et bien d'autres encore, soient développés
-                    dans ce processus de réflexion.
-                </p>
 
             </div>
 
