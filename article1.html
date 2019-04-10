@@ -156,9 +156,7 @@
                     nous voulons bien déterminer un équivalent à la fonction de coût dans un problème classique de Machine Learning. <br>
                     C'est ici qu'intervient la <b>la fonction de valeur (Value Function)</b> : C'est une fonction qui nous dit à quel point
                     chaque état et/ou action est bon, c'est-à-dire à quel point il est bon d'être dans un état particulier, et à quel point 
-                    il est bon d'entreprendre une action particulière. <br>
-                    <div style="height:15px;font-size:10px;">&nbsp;</div>
-            
+                    il est bon d'entreprendre une action particulière. <br>            
                     Dans un état donné S et à l'instant t, la fonction de valeur informe l'agent de la <b>somme attendue (espérance)
                     des récompenses futures pour une stratégie adoptée 𝜋, de manière à choisir la bonne action qui maximise 
                     cette espérance</b>. Mathématiquement, cela correspond à : 
@@ -179,8 +177,41 @@
                             récompenses futures.</li>
                     </ul>
                 </p>
-                    
-                  
+        
+        
+        <div style="height:25px;font-size:25px;">&nbsp;</div>
+                
+                <p style="text-align:justify; font-size:200%; font-weight:600;">
+                    <b>Approches de résolution</b>
+                </p>
+                
+             <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Deux approches sont à mentionner quand nous parlons de résolutions d'un problème de Reinforcement Learning à savoir :
+                </p>
+                    <ul style="text-align:justify; font-size:160%; font-weight:400;">
+                        
+                        <li><b>Value Iteration</b> : Dans une méthode d'apprentissage de renforcement basée sur la fonction de valeur, 
+                            on essaie de maximiser V(s). Telle que définie dans la terminologie précédente, 
+                            Vπ(s) est le rendement à long terme attendu de l'état actuel en vertu de la stratégie π. 
+                            Ainsi, V(s) est la valeur de la récompense que l'agent s'attend à obtenir dans l'avenir en commençant à cet état.</li>
+                        <div style="height:15px;font-size:10px;">&nbsp;</div>
+                        
+                        <li><b>Policy iteration :</b>  Dans une méthode d'apprentissage de renforcement basée sur les stratégies, 
+                            on essaie de trouver une politique telle que l'action menée dans chaque état soit optimale pour obtenir 
+                            le maximum de récompense dans le futur. Ici, aucune fonction de valeur n'est impliquée.
+                            Nous savons que la politique π détermine la prochaine action à prendre dans n'importe quel état.</li>
+                    </ul>
+                </p>
+            
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    La figure ci-dessous présente le pseudo-code des deux méthodes et met le point sur la différence principale entre elles :
+                </p>
+                
+                <div style="height:15px;font-size:15px;">&nbsp;</div>
+                <p align="center">
+                    <img src="./assets/images/value_policy_iter.PNG" class="img-responsive" alt="" align="middle">
+                </p>
+                <div style="height:15px;font-size:15px;">&nbsp;</div>
 
 
 
