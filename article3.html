@@ -38,15 +38,13 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbar-collapse">
-                <ul class="nav navbar-nav ">
+                 <ul class="nav navbar-nav ">
                     <li><a href="./index.html" title="">Home</a></li>
                     <li><a href="./intro.html" title="">Introduction</a></li>
-                    <li><a href="./article1.html" title="">GANs</a></li>
-                    <li><a href="./article2.html" title="">Beautiful Art vs Terrifying Deepfakes</a></li>
-                    <li><a href="./article3.html" title="">What's next ?</a></li>
-                    <li><a href="./news.html" title="">News</a></li>
-                    <li><a href="./videos.html" title="">Videos</a></li>
-                    <li><a href="./about.html" title="">About</a></li>
+                    <li><a href="./article1.html" title="">Bases théoriques du RL</a></li>
+                    <li><a href="./article2.html" title="">Applications du RL</a></li>
+                    <li><a href="./article3.html" title="">RL & Finance</a></li>
+                    <li><a href="./news.html" title="">Ressources</a></li>
                 </ul>
 
 
@@ -61,46 +59,56 @@
                 <img src="./assets/images/work001-01.jpg" class="img-responsive" alt="">
                 <div class="card-container">
                     <div class="text-center">
-                        <h1 class="h2">What's next ?</h1>
+                        <h1 class="h2">RL & Finance</h1>
                     </div>
-                    <p style="text-align:center; font-size:120%;">Cet article s'intéresse aux perspectives des réseaux
-                        antagonistes génératifs et de l'intelligence artificielle</p>
+                    <p style="text-align:center; font-size:120%;">Cet article s'intéresse au potentiel et utilité 
+                        d'application de Reinforcement Learning en Finance</p>
 
-                    <blockquote>
-                        <p>“It’s not artificial intelligence I’m worried about, it’s human stupidity.” </p>
-                        <small class="pull-right">Neil Jacobstein</small>
-                    </blockquote>
                 </div>
             </div>
 
 
-            <div class="col-md-8 col-md-offset-2 section-container-spacer">
-                <div class="row">
-                    <div class="col-xs-12 col-md-6">
-                        <img src="./assets/images/work003-02.jpg" class="img-responsive" alt="">
-                        <p></p>
-                    </div>
-                    <div class="col-xs-12 col-md-6">
-                        <img src="./assets/images/work003-03.jpg" class="img-responsive" alt="">
-                        <p></p>
-                    </div>
-                </div>
-            </div>
 
             <div class="col-xs-12">
+                <p style="text-align:justify; font-size:200%; font-weight:600;">
+                    <b>Définition du problème</b>
+                </p>
                 <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    Au vu du progrès technologique, que prévoir pour le futur ? L’intelligence artificielle a déjà des
-                    incidences sur le monde du travail. Pour autant le vrai visage de ce que beaucoup appellent une
-                    « révolution technologique » est encore inconnu.
-                    Donnera-t-elle naissance à un homme « remplacé », comme s'inquiétaient il y a déjà 300 ans, les
-                    luddites anglais qui détruisaient les métiers à tisser ? Un homme « dominé » qui ne sera plus
-                    maître de son destin, comme le suggère Blade Runner de Ridley Scott ?
-                    Un homme « augmenté », comme le promeuvent aujourd’hui les transhumanistes ? Ou un homme « réhumanisé »
-                    mettant en valeur son intuition et son imaginaire, comme ose espérer Bill Gates ?
-                    Le sociologue Yann Ferguson, explore ces quatre figures du travailleur à l’âge de l’IA à une période
-                    où les discours, prometteurs d'un côté et anxiogènes de l'autre, sur le sujet sont nombreux.
+                    Nous nous intéressons au problème d'optimisation de portefeuille : Nous disposons d'un certain capital que nous
+                    pouvons investir pour acquérir certaines actions (dont le prix évolue dans le temps) et nous cherchons à maximiser 
+                    notre gain (utilité) sur un certain intervalle de temps. <br>
+                    Avant d'explorer ce problème du côté Machine / Reinforcement Learning, fixons d'abord quelques notions pour la suite.
                 </p>
 
+                <p style="text-align:justify; font-size:200%; font-weight:600;">
+                    <b>Approche supervisée et limitations</b>
+                </p>
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Avant d'examiner le problème du point de vue de l'apprentissage par renforcement, réfléchissons à comment nous
+                    pourrions créer une stratégie rentable en utilisant une approche d'apprentissage supervisé. 
+                    Ensuite, nous expliquerons ce qui pose problème à avec cette approche et pourquoi des techniques 
+                    de RL peuvent s'avérer plus efficaces.
+
+                    L'approche la plus intuitive consiste à penser le problème comme prédiction des prix des actifs : 
+                    Si nous pouvons prédire que le marché augmentera, nous pouvons acheter maintenant et vendre une fois que 
+                    le marché aura évolué. Ou, de façon équivalente, si nous prévoyons une baisse du marché, 
+                    nous pouvons être short (emprunter un actif que nous ne possédons pas) et ensuite acheter une fois 
+                    que le marché a évolué.<br>
+                    Cela paraît très simple, mais en fait plusieurs questions se posent :
+                    
+                    Tout d'abord, quel est le prix que nous prévoyons réellement ? Il n'y a pas un seul prix auquel nous achetons : 
+                    Le prix final que nous payons dépend du volume disponible aux différents niveaux du carnet de commandes 
+                    et des frais que nous devons payer. <br>
+                    Une chose naïve à faire est de prédire le prix moyen, qui est le point médian entre le meilleur cours acheteur
+                    et le meilleur cours vendeur. Cependant, il ne s'agit que d'un prix théorique, et non d'un prix auquel nous
+                    pouvons exécuter des ordres, et il pourrait différer considérablement du prix réel que nous payons.
+
+                    La question suivante est celle de l'échelle de temps. Prévoyons-nous le prix de la prochaine transaction ?
+                    Le prix à la seconde suivante ? Une minute ? Une heure ? Jour ? Intuitivement, plus nous voulons prédire l'avenir,
+                    plus l'incertitude est grande et plus le problème de prédiction devient difficile.
+                </p>
+                
+                
                 <div style="height:20px;font-size:20px;">&nbsp;</div>
                 <p align="center">
                     <img src="./assets/images/ganfather.jpg" class="img-responsive" alt="" align="middle">
