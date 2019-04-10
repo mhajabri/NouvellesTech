@@ -83,6 +83,7 @@
                 <p style="text-align:justify; font-size:200%; font-weight:600;">
                     <b>Approche supervisée et limitations</b>
                 </p>
+                
                 <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
                     Avant d'examiner le problème du point de vue de l'apprentissage par renforcement, réfléchissons à comment nous
                     pourrions créer une stratégie rentable en utilisant une approche d'apprentissage supervisé. 
@@ -110,8 +111,10 @@
                         Le prix à la seconde suivante ? Une minute ? Une heure ? Jour ? Intuitivement, plus nous voulons prédire l'avenir,
                         plus l'incertitude est grande et plus le problème de prédiction devient difficile.</li>
                     </ul>
+                </p>
                     <div style="height:20px;font-size:20px;">&nbsp;</div>
-                    
+                
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
                     Pour traduire ces limitations, considérons un exemple concret : Supposons que nous ayons un actif <b>A</b> avec une valeur initiale
                     de départ de P=10,000$. Supposons que nous puissions prédire avec précision que le prix passe de P à 10,050$ dans la minute
                     qui suit. Logiquement, cela signifierait que si nous pouvons réaliser un gain de 50$ en achetant à t=0 et en revendant
@@ -133,12 +136,16 @@
                             Aussi, nous supposons que nous avons des coûts de transaction lors de l'opération de vente aussi, 
                             toujours de l'ordre de 30$.</li>
                     </ul>
+                </p>
                     <div style="height:20px;font-size:20px;">&nbsp;</div>
-                    Au moment du bilan, combien d'argent avons-nous gagné ? -10005 - 30 - 30 + 10045 = -20 !  
-                    <b>Au lieu de faire 50$, nous avons perdu 20$.</b> <br>
-                
+                    
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Au moment du bilan, combien d'argent avons-nous gagné ? -10005 - 30 - 30 + 10045 = -20 ! <b>Au lieu de faire 50$, 
+                    nous avons perdu 20$.</b><br>
                     Quelles leçons pouvons-nous tirer de cet exemple ? 
-                   <ul style="text-align:justify; font-size:160%; font-weight:400;">
+                </p>
+                        
+                    <ul style="text-align:justify; font-size:160%; font-weight:400;">
                     
                         <li> Afin de faire des bénifices à partir d'une simple stratégie de prédiction des prix, nous devons prédire
                             des mouvements de prix relativement importants sur de plus longues  périodes de temps, ce qui en soit
@@ -163,7 +170,10 @@
                             Aussi, nous supposons que nous avons des coûts de transaction lors de l'opération de vente aussi, 
                             toujours de l'ordre de 30$.</li>
                     </ul>
-                
+                    
+                    <div style="height:20px;font-size:20px;">&nbsp;</div>
+        
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
                     A partir de l'analyse de l'exemple précédent et les limitations observées du modèle supervisé, nous comprenons que
                     nous avons besoin de plus qu'un simple modèle de prédiction de prix : Nous avons besoin d'une politique (stratégie)
                     fondée sur des règles qui tient compte des prédictions de prix (qui ne deviennent donc qu'une sous partie du modèle global) 
@@ -171,8 +181,8 @@
                     Comment en arriver à une telle politique ? Comment optimiser les paramètres des politiques et les seuils 
                     de décision ? La réponse à cela n'est pas évidente, et beaucoup de gens utilisent l'heuristique simple ou l'intuition 
                     humaine. C'est en fait ici qu'intervient toute l'utilité d'un modèle basé sur l'apprentissage par renforcement.
-
                 </p>
+
                 
                 
                 <div style="height:20px;font-size:20px;">&nbsp;</div>
@@ -190,25 +200,6 @@
                     <img width="920" height="460" src="./assets/images/which-face.jpg" class="img-responsive" alt="" align="middle">
                 </p>
                 <p></p>
-                <div style="height:30px;font-size:20px;">&nbsp;</div>
-
-                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    L'objectif à travers ce projet, c'est de comprendre que même si les ordinateurs sont bons,
-                    nos systèmes de traitement visuel sont encore meilleurs. En sachant ce qu'il faut rechercher -
-                    le contour du visage, les oreilles, les dents, le background, les contrefaçons sont identifiables
-                    facilement. Du moins pour l'instant. Le matériel et les logiciels utilisés pour produire ces fausses
-                    identitées continueront de s'améliorer et il s'avèrera nécessaire de rester vigilant afin de ne pas
-                    perdre la "course aux armements" entre falsification et détection.
-                </p>
-
-                <div style="height:20px;font-size:20px;">&nbsp;</div>
-
-
-                <div style="height:20px;font-size:20px;">&nbsp;</div>
-                <p align="center">
-                    <img src="./assets/images/bullshit-project.jpg" class="img-responsive" alt="" align="middle">
-                </p>
-
                 <div style="height:30px;font-size:20px;">&nbsp;</div>
 
 
