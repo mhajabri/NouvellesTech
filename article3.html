@@ -109,16 +109,18 @@
                 <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
                     Avant d'examiner le problème du point de vue de l'apprentissage par renforcement, réfléchissons à comment nous
                     pourrions créer une stratégie rentable en utilisant une approche d'apprentissage supervisé. 
-                    Ensuite, nous expliquerons ce qui pose problème à avec cette approche et pourquoi des techniques 
-                    de RL peuvent s'avérer plus efficaces.
-                    <div style="height:20px;font-size:20px;">&nbsp;</div>
+                    Ensuite, nous expliquerons ce qui pose problème dans cette approche et pourquoi des techniques 
+                    de RL peuvent s'avérer plus efficaces.</p>
 
+                    <div style="height:20px;font-size:20px;">&nbsp;</div>
+                
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
                     L'approche la plus intuitive consiste à penser le problème comme prédiction des prix des actifs : 
                     Si nous pouvons prédire que le marché augmentera, nous pouvons acheter maintenant et vendre une fois que 
                     le marché aura évolué. Ou, de façon équivalente, si nous prévoyons une baisse du marché, 
                     nous pouvons être short (emprunter un actif que nous ne possédons pas) et ensuite acheter une fois 
                     que le marché a évolué.<br>
-                    Cela paraît très simple, mais en fait plusieurs questions se posent :
+                    Cela paraît très simple, mais en fait plusieurs questions se posent : </p>
                     <ul style="text-align:justify; font-size:160%; font-weight:400;">
                     
                         <li>Tout d'abord, quel est le prix que nous prévoyons réellement ? Il n'y a pas un seul prix auquel nous achetons : 
@@ -133,7 +135,6 @@
                         Le prix à la seconde suivante ? Une minute ? Une heure ? Jour ? Intuitivement, plus nous voulons prédire l'avenir,
                         plus l'incertitude est grande et plus le problème de prédiction devient difficile.</li>
                     </ul>
-                </p>
                     <div style="height:20px;font-size:20px;">&nbsp;</div>
                 
                 <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
@@ -251,7 +252,7 @@
                             d'action continu, car nous devons décider à la fois de l'action (discrète) et de la quantité (continue).</li>
                         <div style="height:15px;font-size:10px;">&nbsp;</div>
                         
-                        <li><b>Fonciton de récompense : </b> Nous allons choisir ici une des fonctions de mesure de l'utilité de l'agent
+                        <li><b>Fonction de récompense : </b> Nous allons choisir ici une des fonctions de mesure de l'utilité de l'agent
                             telles qu'introduites dans la définition du problème.</li>
                         <div style="height:15px;font-size:10px;">&nbsp;</div>
 
@@ -259,13 +260,42 @@
                     
                     <div style="height:20px;fo cvnt-size:20px;">&nbsp;</div>
         
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Maintenant que nous savons qu'on peut formuler le problème d'optimisation de portefeuille comme un problème
+                    d'apprentissage par renforcement peut être utilisé dans le trading, comprenons pourquoi nous voulons l'utiliser 
+                    plutôt que des techniques supervisées. <br>
+                    <div style="height:20px;fo cvnt-size:20px;">&nbsp;</div>
+                        
+                    
+                    <b>Optimisation de bout en bout</b>  Dans l'approche traditionnelle d'élaboration de stratégies, nous devons
+                    franchir plusieurs étapes, avant d'en arriver à la mesure à laquelle nous nous intéressons réellement. 
+                    Par exemple, si l'on veut trouver une stratégie avec un retrait maximal de 25 %, il faut former un modèle supervisé, 
+                    élaborer une politique fondée sur des règles à l'aide du modèle, tester la politique et optimiser ses 
+                    hyperparamètres, et enfin évaluer sa performance par simulation.<br>
+                    L'apprentissage par renforcement permet une optimisation de bout en bout et maximise les 
+                    récompenses (potentiellement retardées). En ajoutant un terme à la fonction de récompense, nous pouvons par exemple 
+                    optimiser sans avoir besoin de passer par des étapes séparées. Par exemple, vous pourriez imaginer donner 
+                    une récompense négative importante chaque fois qu'un retrait de plus de 25 % se produit, forçant l'agent 
+                    à chercher une autre stratégie. 
+                    <div style="height:20px;fo cvnt-size:20px;">&nbsp;</div>
+        
+        
+                    <b>Stratégies apprises</b>  Au lieu d'avoir besoin de coder manuellement une politique basée sur des règles, 
+                    La force du RL est le fait que l'on <b>append</b> directement une politique. Il n'est pas nécessaire pour nous 
+                    de spécifier des règles et des seuils tels que "acheter quand vous êtes sûr à plus de 75% que le marché va monter". 
+                    C'est ce qui est prévu dans la politique RL, qui optimise la métrique à laquelle nous nous intéressons.
+                    Nous supprimons une étape complète du processus d'élaboration de la stratégie ! Et parce que la politique peut
+                    être paramétrée par un modèle complexe, tel qu'un réseau de neurones profond, nous pouvons apprendre des politiques
+                    qui sont plus complexes et plus puissantes que n'importe quelles règles qu'un trader humain pourrait imaginer.
+        
+                    Au final, développer des stratégies de trading en utilisant RL ressemble donc à ceci :
 
 
       
 
                 <div style="height:20px;font-size:20px;">&nbsp;</div>
                 <p align="center">
-                    <img width="920" height="460" src="./assets/images/which-face.jpg" class="img-responsive" alt="" align="middle">
+                    <img width="920" height="460" src="./assets/images/RL_finance_pipeline.PNG" class="img-responsive" alt="" align="middle">
                 </p>
                 <p></p>
                 <div style="height:30px;font-size:20px;">&nbsp;</div>
