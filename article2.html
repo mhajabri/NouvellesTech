@@ -108,10 +108,13 @@
                     d'utilisation du RL dans le futur.
                 </p>
 
-                <div style="height:20px;font-size:20px;">&nbsp;</div>
-
                 
                 <p style="text-align:justify; font-size:200%; font-weight:600;">
+                    <b>Applications du Reinforcement Learning</b>
+                </p>
+                
+                <div style="height:30px;font-size:30px;">&nbsp;</div>
+                <p style="text-align:justify; font-size:150%; font-weight:500;">
                     <b>Gestion de feux de signalisation</b>
                 </p>
                 
@@ -135,8 +138,9 @@
                 </p>
                 <p></p>
             
-                <div style="height:20px;font-size:20px;">&nbsp;</div>
-                <p style="text-align:justify; font-size:200%; font-weight:600;">
+                
+                <div style="height:300px;font-size:30px;">&nbsp;</div>
+                <p style="text-align:justify; font-size:150%; font-weight:500;">
                     <b>Robotique</b>
                 </p>
                 
@@ -157,56 +161,46 @@
                 </p>
 
                 
-                <div style="height:20px;font-size:20px;">&nbsp;</div>
-                <p style="text-align:justify; font-size:200%; font-weight:600;">
+                <div style="height:30px;font-size:30px;">&nbsp;</div>
+                <p style="text-align:justify; font-size:150%; font-weight:500;">
                     <b>Gaming</b>
                 </p>
 
                 <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    RL est si bien connu de nos jours parce que c'est l'algorithme principal utilisé pour résoudre différents jeux
-                    et parfois atteindre des performances surhumaines.<br>
-                    Le plus célèbre doit être AlphaGo[12] et AlphaGo Zero[13]. AlphaGo, formé à d'innombrables jeux humains, 
-                    a déjà atteint une performance surhumaine en utilisant le réseau de valeurs et la recherche par arbre 
-                    de Monte Carlo (SCTM) dans son réseau de politiques. Pourtant, les chercheurs ont réfléchi plus tard et
-                    ont essayé une approche plus pure de la LRR - l'entraîner à partir de zéro. Les chercheurs ont laissé 
-                    le nouvel agent, AlphaGo Zero, jouer avec lui-même et finalement battre AlphaGo 100-0.
+                    Le Reinforcement Learning est devenu beaucoup plus connu de nos jours parce que c'est l'algorithme principal 
+                    utilisé pour résoudre différents jeux et parfois atteindre des performances surhumaines.<br>
+                    Les plus célèbres d'entre sont AlphaGo[12] et AlphaGo Zero[13], mis en place par DeepMind (une équipe de Google),
+                    qui ont été très médiatisé à tel point qu'un documentaire a par la suite été fait autour d'eux (disponible sur Netflix 
+                    et autres plateformes).<br>
+                    AlphaGo, qui a été entrainé avec des millions de parties jouées par des humains, avait déjà atteint une 
+                    performance surhumaine et d'excellent résultats grâce au champion du monde en place. Pourtant, les chercheurs 
+                    ont réfléchi plus tard et ont essayé de purifier leur travail en apportant le minimum d'expertise possible : en d'autres
+                    termes, le but était de créer un modèle sans Domain Knowledge, sans voir les parties d'autres humains mais seulement 
+                    en jouant contre soi-même jusqu'à ce qu'on apprennne à jouer, d'où le nm "Zero". Cette approche s'est révelée fructueuse puisque
+                    finalement le nouvel agent, AlphaGo Zero, a joué contre l'original AlphaGo et lui a infligé 100-0.
                 </p>
-
-                <p align="center">
-                    <img width="784" height="441" src="./assets/images/latentspace.jpg" class="img-responsive" alt="" align="middle">
+                
+                
+                <div style="height:30px;font-size:30px;">&nbsp;</div>
+                <p style="text-align:justify; font-size:200%; font-weight:600;">
+                    <b>Lien entre RL et autres domaines</b>
                 </p>
-
+                
                 <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    RL a une relation très étroite avec la psychologie, la biologie et les neurosciences. Si vous y réfléchissez bien, 
-                    ce que fait un agent de NR n'est qu'un essai-erreur : il apprend à quel point ses actions sont bonnes ou mauvaises
-                    en fonction des récompenses qu'il reçoit de l'environnement. Et c'est exactement comme ça que l'homme apprend 
-                    à prendre une décision. Par ailleurs, le problème de l'exploration et de l'exploitation, le problème de la 
-                    cession de crédit, les tentatives de modélisation de l'environnement sont aussi des problèmes auxquels 
-                    nous sommes confrontés dans notre vie quotidienne.
+                    RL a une relation très étroite avec la <b>psychologie, la biologie et les neurosciences.</b> <br>
+                    Comme dit auparavant, ce que fait un agent de n'est qu'un essai-erreur : il apprend à quel point ses actions
+                    sont bonnes ou mauvaises en fonction des récompenses qu'il reçoit de l'environnement. Et c'est exactement comme ça 
+                    que l'homme apprend  à prendre une décision. Par ailleurs, le problème de l'exploration et de l'exploitation ou encore
+                    les tentatives de modélisation de l'environnement sont aussi des problèmes auxquels 
+                    nous sommes confrontés dans notre vie quotidienne.<br>
                     
-                    La théorie de l'économie peut aussi éclairer un peu la question de la RL. En particulier, 
+                    La théorie de <b>l'économie</b> peut aussi éclairer un peu la question de la RL. En particulier, 
                     l'analyse de l'apprentissage du renforcement multi-agent (MARL) peut être comprise à partir des perspectives 
                     de la théorie des jeux, qui est un domaine de recherche développé par John Nash pour comprendre les interactions 
-                    des agents dans un système. En plus de la théorie des jeux, le MARL, Partially Observable Markov Decision Process (POMDP) pourrait également être utile pour comprendre d'autres sujets économiques comme la structure du marché (monopole, oligopole, etc.), l'externalité et l'asymétrie d'information.
+                    des agents dans un système.
                 </p>
 
-                <div style="height:30px;font-size:20px;">&nbsp;</div>
-
-                <p align="center">
-                    <img src="./assets/images/semantic-map.gif" class="img-responsive" alt="" align="middle">
-                </p>
-                <p></p>
-
-                <div style="height:30px;font-size:20px;">&nbsp;</div>
-
-
-                <p align="center">
-                    <iframe width="784" height="441" src="https://www.youtube.com/embed/p5U4NgVGAwg" frameborder="0"
-                            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                    </iframe>
-                </p>
-
-                <div style="height:20px;font-size:20px;">&nbsp;</div>
+     
 
 
             </div>
