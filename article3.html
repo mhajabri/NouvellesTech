@@ -80,27 +80,35 @@
                     Avant d'explorer ce problème du côté Machine / Reinforcement Learning, fixons d'abord quelques notions pour la suite.
                 </p>
                 
-                Fonction Récompense
-                Il y a plusieurs fonctions de récompense possibles parmi lesquelles nous pouvons choisir. <br>
-                Un exemple évident serait le PnL réalisé (Profit and Loss). L'agent reçoit une récompense chaque fois qu'il clôt
-                une position, par exemple lorsqu'il vend un actif qu'il a déjà acheté ou achète un actif qu'il a déjà emprunté. 
-                Le bénéfice net de ce commerce peut être positif ou négatif. C'est le signal de la récompense. Au fur et à mesure que 
-                l'agent maximise la récompense cumulative totale, il apprend à négocier de façon rentable. Cette fonction de récompense 
-                est techniquement correcte et conduit à la politique optimale dans la limite. Cependant, les récompenses sont rares 
-                parce que les actions d'achat et de vente sont relativement rares par rapport à l'inaction. Par conséquent, l'agent 
-                doit apprendre sans recevoir de rétroaction fréquente.<br>
+                <ul style="text-align:justify; font-size:160%; font-weight:400;">
+                    
+                    <li><b>Un actif</b> est un élément de valeur économique. Exemples d'actifs : liquidités, actions...</li>
+                    <div style="height:15px;font-size:10px;">&nbsp;</div>
+                    
+                    <li><b>Un portefeuille</b> est un ensemble d'actifs financiers multiples, et est déterminé par deux choses : <br>
+                        Ses constituants (m actifs dont il est constitué) et un vecteur portefeuille dont la i-ème composante représente 
+                        le rapport entre le budget total investi dans l'actif 'i' et le budget total à disposition </li>.
+                    <div style="height:15px;font-size:10px;">&nbsp;</div>
+                    
+                    <li><b>La période de trading est divisée en périodes égales de durée T. Au début de chaque période,
+                        notre agent de négociation réattribue le budget disponible entre les actifs, c'est-à-dire que le vecteur portefeuille est
+                        mis à jour.<br>
+                        Le prix d'un actif fluctue à la hausse et à la baisse au cours d'une période, mais quatre prix importants
+                        caractérisent le mouvement global d'une période, à savoir : l'ouverture, le plus haut, le plus bas et les cours 
+                        de clôture.</b></li>
+                        
+                    <li><b> Que veut-on vraiment faire ? </b> Intuitivement, la réponse est : Réaliser le plus de bénéfices possibles.
+                    Ceci est en partie vrai, et la métrique qui mesure purement cela est le PnL (Profit and Loss) :
+                    C'est le bénéfice net de l'ensemble d'opérations executées, qui peut être positif ou négatif. Une alternative 
+                    serait le PnL non réalisé, qui correspond au bénéfice net que l'on obtiendrait en fermant immédiatement toutes 
+                    ses positions.<br>
+                    Ces deux fonctions de récompense optimisent naïvement le profit. En réalité, un trader peut vouloir minimiser le risque.
+                    Une stratégie avec un rendement légèrement inférieur mais une volatilité significativement plus faible est préférable 
+                    à une stratégie très volatile mais seulement légèrement plus rentable. L'utilisation du ratio de Sharpe est un moyen 
+                    simple de prendre en compte le risque.</li>
+                </ul>
                 
-                Une alternative avec une rétroaction plus fréquente serait le PnL non réalisé, qui correspondrait au bénéfice net 
-                que l'agent obtiendrait s'il fermait immédiatement toutes ses positions.
-                Par exemple, si le prix baisse après que l'agent a passé un ordre d'achat, il recevra une récompense négative même 
-                s'il n'a pas encore vendu. Comme le PnL non réalisé peut changer à chaque pas de temps, il donne à l'agent des 
-                signaux de rétroaction plus fréquents. Cependant, la rétroaction directe peut aussi biaiser l'agent en faveur 
-                d'actions à court terme lorsqu'elle est utilisée en conjonction avec un facteur de désintégration.
-
-                Ces deux fonctions de récompense optimisent naïvement le profit. En réalité, un trader peut vouloir minimiser le risque.
-                Une stratégie avec un rendement légèrement inférieur mais une volatilité significativement plus faible est préférable 
-                à une stratégie très volatile mais seulement légèrement plus rentable. L'utilisation du ratio de Sharpe est un moyen 
-                simple de prendre en compte le risque, mais il en existe bien d'autres. 
+               
                 
                 <div style="height:25px;font-size:25px;">&nbsp;</div>
                 <p style="text-align:justify; font-size:200%; font-weight:600;">
