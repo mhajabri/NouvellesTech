@@ -101,7 +101,8 @@
                 Une stratégie avec un rendement légèrement inférieur mais une volatilité significativement plus faible est préférable 
                 à une stratégie très volatile mais seulement légèrement plus rentable. L'utilisation du ratio de Sharpe est un moyen 
                 simple de prendre en compte le risque, mais il en existe bien d'autres. 
-
+                
+                <div style="height:25px;font-size:25px;">&nbsp;</div>
                 <p style="text-align:justify; font-size:200%; font-weight:600;">
                     <b>Approche supervisée et limitations</b>
                 </p>
@@ -205,15 +206,17 @@
                     de décision ? La réponse à cela n'est pas évidente, et beaucoup de gens utilisent l'heuristique simple ou l'intuition 
                     humaine. C'est en fait ici qu'intervient toute l'utilité d'un modèle basé sur l'apprentissage par renforcement.
                 </p>
-
+            
+                <div style="height:25px;font-size:25px;">&nbsp;</div>
                 <p style="text-align:justify; font-size:200%; font-weight:600;">
                     <b>Modélisation par Reinforcement Learning</b>
                 </p>
                 
                 <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
-                    Au moment du bilan, combien d'argent avons-nous gagné ? -10005 - 30 - 30 + 10045 = -20 ! <b>Au lieu de faire 50$, 
-                    nous avons perdu 20$.</b><br>
-                    Quelles leçons pouvons-nous tirer de cet exemple ? 
+                    Quand nous abordons un problème de l'angle du supervisé, nous nous intéressons à la variable de sortie et les variables
+                    qui vont être utilisées pour prédire cette sortie (prédictors) et nous cherchons le mapping désiré. En RL, il va falloir
+                    comprendre à quoi correspond chaque élèment de notre problème pour voir s'il s'adapte bien au framework de RL. <br>
+                    Dans le cas présent, voici ce que ça donne :
                 </p>
                         
                     <ul style="text-align:justify; font-size:160%; font-weight:400;">
@@ -258,13 +261,13 @@
 
                     </ul>
                     
-                    <div style="height:20px;fo cvnt-size:20px;">&nbsp;</div>
+                    <div style="height:15px;fo cvnt-size:15px;">&nbsp;</div>
         
                 <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
                     Maintenant que nous savons qu'on peut formuler le problème d'optimisation de portefeuille comme un problème
                     d'apprentissage par renforcement peut être utilisé dans le trading, comprenons pourquoi nous voulons l'utiliser 
                     plutôt que des techniques supervisées. <br>
-                    <div style="height:20px;fo cvnt-size:20px;">&nbsp;</div>
+                    <div style="height:10px;fo cvnt-size:10px;">&nbsp;</div>
                         
                     
                     <b>Optimisation de bout en bout</b>  Dans l'approche traditionnelle d'élaboration de stratégies, nous devons
@@ -277,7 +280,7 @@
                     optimiser sans avoir besoin de passer par des étapes séparées. Par exemple, vous pourriez imaginer donner 
                     une récompense négative importante chaque fois qu'un retrait de plus de 25 % se produit, forçant l'agent 
                     à chercher une autre stratégie. 
-                    <div style="height:20px;fo cvnt-size:20px;">&nbsp;</div>
+                    <<div style="height:10px;fo cvnt-size:10px;">&nbsp;</div>
         
         
                     <b>Stratégies apprises</b>  Au lieu d'avoir besoin de coder manuellement une politique basée sur des règles, 
