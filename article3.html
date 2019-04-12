@@ -79,6 +79,28 @@
                     notre gain (utilité) sur un certain intervalle de temps. <br>
                     Avant d'explorer ce problème du côté Machine / Reinforcement Learning, fixons d'abord quelques notions pour la suite.
                 </p>
+                
+                Fonction Récompense
+                Il y a plusieurs fonctions de récompense possibles parmi lesquelles nous pouvons choisir. <br>
+                Un exemple évident serait le PnL réalisé (Profit and Loss). L'agent reçoit une récompense chaque fois qu'il clôt
+                une position, par exemple lorsqu'il vend un actif qu'il a déjà acheté ou achète un actif qu'il a déjà emprunté. 
+                Le bénéfice net de ce commerce peut être positif ou négatif. C'est le signal de la récompense. Au fur et à mesure que 
+                l'agent maximise la récompense cumulative totale, il apprend à négocier de façon rentable. Cette fonction de récompense 
+                est techniquement correcte et conduit à la politique optimale dans la limite. Cependant, les récompenses sont rares 
+                parce que les actions d'achat et de vente sont relativement rares par rapport à l'inaction. Par conséquent, l'agent 
+                doit apprendre sans recevoir de rétroaction fréquente.<br>
+                
+                Une alternative avec une rétroaction plus fréquente serait le PnL non réalisé, qui correspondrait au bénéfice net 
+                que l'agent obtiendrait s'il fermait immédiatement toutes ses positions.
+                Par exemple, si le prix baisse après que l'agent a passé un ordre d'achat, il recevra une récompense négative même 
+                s'il n'a pas encore vendu. Comme le PnL non réalisé peut changer à chaque pas de temps, il donne à l'agent des 
+                signaux de rétroaction plus fréquents. Cependant, la rétroaction directe peut aussi biaiser l'agent en faveur 
+                d'actions à court terme lorsqu'elle est utilisée en conjonction avec un facteur de désintégration.
+
+                Ces deux fonctions de récompense optimisent naïvement le profit. En réalité, un trader peut vouloir minimiser le risque.
+                Une stratégie avec un rendement légèrement inférieur mais une volatilité significativement plus faible est préférable 
+                à une stratégie très volatile mais seulement légèrement plus rentable. L'utilisation du ratio de Sharpe est un moyen 
+                simple de prendre en compte le risque, mais il en existe bien d'autres. 
 
                 <p style="text-align:justify; font-size:200%; font-weight:600;">
                     <b>Approche supervisée et limitations</b>
@@ -183,14 +205,60 @@
                     humaine. C'est en fait ici qu'intervient toute l'utilité d'un modèle basé sur l'apprentissage par renforcement.
                 </p>
 
-                
-                
-                <div style="height:20px;font-size:20px;">&nbsp;</div>
-                <p align="center">
-                    <img src="./assets/images/ganfather.jpg" class="img-responsive" alt="" align="middle">
+                <p style="text-align:justify; font-size:200%; font-weight:600;">
+                    <b>Modélisation par Reinforcement Learning</b>
                 </p>
-                <p style="text-align:right;">The Robot Uprising by Bryn G Jones</p>
-                <div style="height:30px;font-size:20px;">&nbsp;</div>
+                
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
+                    Au moment du bilan, combien d'argent avons-nous gagné ? -10005 - 30 - 30 + 10045 = -20 ! <b>Au lieu de faire 50$, 
+                    nous avons perdu 20$.</b><br>
+                    Quelles leçons pouvons-nous tirer de cet exemple ? 
+                </p>
+                        
+                    <ul style="text-align:justify; font-size:160%; font-weight:400;">
+                    
+                        <li><b>Agent : </b>L'agent est notre agent de négociation. Vous pouvez considérer l'agent comme un trader humain 
+                            qui ouvre l'interface graphique d'une bourse et prend des décisions de trading basées sur l'état actuel de la bourse 
+                            et de son compte.</li>
+                        <div style="height:15px;font-size:10px;">&nbsp;</div>
+
+                        <li><b>Environnement : </b>Ce qui est important à noter, c'est qu'il y a beaucoup d'autres agents, 
+                            tant humains qu'algorithmes de trading automatiques. Ces agents négocient sur le même marché.<br>
+                            Supposons un instant que nous agissons à une échelle minutaire i.e : Nous passons l'action, attendons une minute, 
+                            obtenons un nouvel état, prenons une autre mesure, et ainsi de suite. Lorsque nous observons un nouvel état, 
+                            ce sera la réponse de l'environnement du marché, ce qui inclut la réponse des autres agents. 
+                            Ainsi, du point de vue de notre agent, ces agents font aussi partie de l'environnement. 
+                            On ne peut pas les contrôler.<br>
+                            Pour simplifier, supposons que nous interagissons avec un environnement complexe unique 
+                            qui inclut le comportement de tous les autres agents.</li>
+                        <div style="height:15px;font-size:10px;">&nbsp;</div>
+                        
+                        <li><b>Etat : </b> Dans le cas d'une négociation en bourse, nous n'observons pas l'état complet de 
+                            l'environnement. Par exemple, nous ne connaissons pas les autres agents qui se trouvent dans l'environnement, 
+                            leur nombre, leur actif, etc. Il s'agit donc d'un processus de décision de Markov partiellement observable.
+                            Ce que l'agent observe n'est pas l'état actuel S_t de l'environnement, mais une dérivation de celui-ci.<br>
+                            Dans notre cas, l'observation à chaque étape t est simplement l'historique de tous les événements 
+                            d'échange reçus jusqu'à l'heure t.</li>
+                        <div style="height:15px;font-size:10px;">&nbsp;</div>
+                        
+                        <li><b>Espace d'actions : </b> Dans l'apprentissage du renforcement, nous faisons une distinction entre 
+                            les espaces d'action discrets (finis) et continus (infinis).<br>
+                            Dans le problème abordé ici, nous avons deux choix de complexité bien différente. <br>
+                            L'approche la plus simple serait d'avoir trois actions : Acheter, conserver et vendre. Cela fonctionne, 
+                            mais cela nous limite à passer des ordres au marché et à investir une somme d'argent déterministe à 
+                            chaque étape.  Le prochain niveau de complexité serait de laisser notre agent apprendre combien d'argent 
+                            investir, par exemple, en fonction de l'incertitude de notre modèle. Cela nous mettrait dans un espace 
+                            d'action continu, car nous devons décider à la fois de l'action (discrète) et de la quantité (continue).</li>
+                        <div style="height:15px;font-size:10px;">&nbsp;</div>
+                        
+                        <li><b>Fonciton de récompense : </b> Nous allons choisir ici une des fonctions de mesure de l'utilité de l'agent
+                            telles qu'introduites dans la définition du problème.</li>
+                        <div style="height:15px;font-size:10px;">&nbsp;</div>
+
+                    </ul>
+                    
+                    <div style="height:20px;fo cvnt-size:20px;">&nbsp;</div>
+        
 
 
       
