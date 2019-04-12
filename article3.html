@@ -85,17 +85,18 @@
                     <li><b>Un actif</b> est un élément de valeur économique. Exemples d'actifs : liquidités, actions...</li>
                     <div style="height:15px;font-size:10px;">&nbsp;</div>
                     
-                    <li><b>Un portefeuille</b> est un ensemble d'actifs financiers multiples, et est déterminé par deux choses : <br>
+                    <li><b>Un portefeuille</b> est un ensemble d'actifs financiers multiples, et est déterminé par deux choses: <br>
                         Ses constituants (m actifs dont il est constitué) et un vecteur portefeuille dont la i-ème composante représente 
-                        le rapport entre le budget total investi dans l'actif 'i' et le budget total à disposition </li>.
+                        le rapport entre le budget total investi dans l'actif 'i' et le budget total à disposition. </li>
                     <div style="height:15px;font-size:10px;">&nbsp;</div>
                     
-                    <li><b>La période de trading est divisée en périodes égales de durée T. Au début de chaque période,
+                    <li><b>La période de trading</b> est divisée en périodes égales de durée T. Au début de chaque période,
                         notre agent de négociation réattribue le budget disponible entre les actifs, c'est-à-dire que le vecteur portefeuille est
                         mis à jour.<br>
                         Le prix d'un actif fluctue à la hausse et à la baisse au cours d'une période, mais quatre prix importants
                         caractérisent le mouvement global d'une période, à savoir : l'ouverture, le plus haut, le plus bas et les cours 
-                        de clôture.</b></li>
+                        de clôture.</li>
+                    <div style="height:15px;font-size:10px;">&nbsp;</div>
                         
                     <li><b> Que veut-on vraiment faire ? </b> Intuitivement, la réponse est : Réaliser le plus de bénéfices possibles.
                     Ceci est en partie vrai, et la métrique qui mesure purement cela est le PnL (Profit and Loss) :
@@ -121,7 +122,7 @@
                     Ensuite, nous expliquerons ce qui pose problème dans cette approche et pourquoi des techniques 
                     de RL peuvent s'avérer plus efficaces.</p>
 
-                    <div style="height:20px;font-size:20px;">&nbsp;</div>
+                    <div style="height:15px;font-size:15px;">&nbsp;</div>
                 
                 <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
                     L'approche la plus intuitive consiste à penser le problème comme prédiction des prix des actifs : 
@@ -144,7 +145,7 @@
                         Le prix à la seconde suivante ? Une minute ? Une heure ? Jour ? Intuitivement, plus nous voulons prédire l'avenir,
                         plus l'incertitude est grande et plus le problème de prédiction devient difficile.</li>
                     </ul>
-                    <div style="height:20px;font-size:20px;">&nbsp;</div>
+                    <div style="height:15px;font-size:15px;">&nbsp;</div>
                 
                 <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
                     Pour traduire ces limitations, considérons un exemple concret : Supposons que nous ayons un actif <b>A</b> avec une valeur initiale
@@ -215,7 +216,7 @@
                     humaine. C'est en fait ici qu'intervient toute l'utilité d'un modèle basé sur l'apprentissage par renforcement.
                 </p>
             
-                <div style="height:25px;font-size:25px;">&nbsp;</div>
+                <div style="height:30px;font-size:30px;">&nbsp;</div>
                 <p style="text-align:justify; font-size:200%; font-weight:600;">
                     <b>Modélisation par Reinforcement Learning</b>
                 </p>
@@ -275,9 +276,10 @@
                     Maintenant que nous savons qu'on peut formuler le problème d'optimisation de portefeuille comme un problème
                     d'apprentissage par renforcement peut être utilisé dans le trading, comprenons pourquoi nous voulons l'utiliser 
                     plutôt que des techniques supervisées. <br>
-                    <div style="height:10px;fo cvnt-size:10px;">&nbsp;</div>
+                </p>    
+                <div style="height:15px;fo cvnt-size:10px;">&nbsp;</div>
                         
-                    
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;  
                     <b>Optimisation de bout en bout</b>  Dans l'approche traditionnelle d'élaboration de stratégies, nous devons
                     franchir plusieurs étapes, avant d'en arriver à la mesure à laquelle nous nous intéressons réellement. 
                     Par exemple, si l'on veut trouver une stratégie avec un retrait maximal de 25 %, il faut former un modèle supervisé, 
@@ -288,9 +290,10 @@
                     optimiser sans avoir besoin de passer par des étapes séparées. Par exemple, vous pourriez imaginer donner 
                     une récompense négative importante chaque fois qu'un retrait de plus de 25 % se produit, forçant l'agent 
                     à chercher une autre stratégie. 
-                    <<div style="height:10px;fo cvnt-size:10px;">&nbsp;</div>
+                </p>
+                <div style="height:15px;fo cvnt-size:10px;">&nbsp;</div>
         
-        
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;  
                     <b>Stratégies apprises</b>  Au lieu d'avoir besoin de coder manuellement une politique basée sur des règles, 
                     La force du RL est le fait que l'on <b>append</b> directement une politique. Il n'est pas nécessaire pour nous 
                     de spécifier des règles et des seuils tels que "acheter quand vous êtes sûr à plus de 75% que le marché va monter". 
@@ -298,11 +301,12 @@
                     Nous supprimons une étape complète du processus d'élaboration de la stratégie ! Et parce que la politique peut
                     être paramétrée par un modèle complexe, tel qu'un réseau de neurones profond, nous pouvons apprendre des politiques
                     qui sont plus complexes et plus puissantes que n'importe quelles règles qu'un trader humain pourrait imaginer.
-        
+                </p>
+                <div style="height:15px;fo cvnt-size:10px;">&nbsp;</div>
+                
+                <p style="text-align:justify; font-size:160%; font-weight:400;">&emsp;
                     Au final, développer des stratégies de trading en utilisant RL ressemble donc à ceci :
-
-
-      
+                </p>
 
                 <div style="height:20px;font-size:20px;">&nbsp;</div>
                 <p align="center">
@@ -310,8 +314,6 @@
                 </p>
                 <p></p>
                 <div style="height:30px;font-size:20px;">&nbsp;</div>
-
-
 
 
             </div>
